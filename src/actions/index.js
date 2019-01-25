@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import jsonplaceholder from "../apis/jsonplaceholder";
 
 // version1
@@ -18,4 +19,12 @@ export const fetchPost =  () => async dispatch => {
             type: 'FETCH_POSTS', 
             payload: response.data
         })
-    }
+}
+
+export const fetchUser = (id) => async dispatch => {    
+        const response = await jsonplaceholder.get(`/users/${id}`);
+        dispatch({
+            type : 'FETCH_USER',
+            payload : response.data
+        })
+}
